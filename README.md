@@ -1,21 +1,28 @@
 cat > README.md << 'EOF'
-# Proxy V2Ray pour VPS 5.144.179.51
+# Proxy Nginx pour VPS (167.99.88.149)
 
-Proxy Nginx déployé sur Google Cloud Run pour rediriger le trafic vers le VPS principal.
+Proxy Nginx déployé sur Google Cloud Run pour rediriger le trafic TCP vers le VPS principal.
 
 ## Configuration
-- **VPS cible** : 5.144.179.51:443
-- **Port d'écoute** : 8080
-- **Région Cloud Run** : us-central1 (Iowa, USA)
-- **Type de proxy** : TCP Stream (layer 4)
+- **VPS cible** : `167.99.88.149:443`
+- **Port d'écoute du proxy** : `8080`
+- **Région du VPS** : `europe-west2` (Londres, UK)
+- **Région Cloud Run** : `europe-west2` (Londres, UK) – alignée avec le VPS
+- **Type de proxy** : TCP Stream (Layer 4)
+- **Usage** : Tunnel pour Xray/3x-ui (VPN)
 
-## Déploiement
+## Fichiers
+- `nginx.conf` : Configuration Nginx optimisée (keepalive, retries, timeouts)
+- `Dockerfile` : Image Nginx:alpine avec copie de la config
+- `README.md` : Ce fichier
+
+## Déploiement sur Cloud Run (région Londres)
 ```bash
-# Déploiement sur Cloud Run (région USA)
+# Déploiement initial
 gcloud run deploy v2ray-proxy \
   --source . \
   --platform managed \
-  --region us-central1 \
+  --region europe-west2 \
   --allow-unauthenticated \
   --port 8080 \
   --memory 256Mi \
