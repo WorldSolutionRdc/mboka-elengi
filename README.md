@@ -1,4 +1,4 @@
-# Proxy Nginx pour VPS (161.35.91.8)
+# Proxy Nginx pour VPS Amsterdam (161.35.91.8)
 
 Proxy Nginx déployé sur Google Cloud Run pour rediriger le trafic TCP vers le VPS principal.
 
@@ -7,9 +7,8 @@ Proxy Nginx déployé sur Google Cloud Run pour rediriger le trafic TCP vers le 
 |---------|--------|
 | **VPS cible** | `161.35.91.8:443` |
 | **Port d'écoute proxy** | `8080` |
-| **Région Cloud Run** | `europe-west2` (Londres, UK) |
+| **Région Cloud Run** | `europe-west4` (Amsterdam, Pays-Bas) |
 | **Type de proxy** | TCP Stream (Layer 4) |
-| **Usage** | Tunnel pour Xray/3x-ui (VPN) |
 
 ## Optimisations (économies de crédits)
 | Paramètre | Valeur | Impact |
@@ -21,16 +20,16 @@ Proxy Nginx déployé sur Google Cloud Run pour rediriger le trafic TCP vers le 
 | `memory` | `256Mi` | Minimum requis |
 
 ## Fichiers
-- `nginx.conf` : Configuration Nginx optimisée (keepalive, retries, timeouts)
-- `Dockerfile` : Image Nginx:alpine avec copie de la config
+- `nginx.conf` : Configuration Nginx optimisée
+- `Dockerfile` : Image Nginx:alpine
 - `README.md` : Ce fichier
 
-## Déploiement sur Cloud Run
+## Déploiement sur Cloud Run (Amsterdam)
 ```bash
 gcloud run deploy v2ray-proxy \
   --source . \
   --platform managed \
-  --region europe-west2 \
+  --region europe-west4 \
   --allow-unauthenticated \
   --port 8080 \
   --memory 256Mi \
