@@ -7,7 +7,7 @@ Proxy Nginx déployé sur Google Cloud Run pour rediriger le trafic TCP vers le 
 |---------|--------|
 | **VPS cible** | `161.35.91.8:443` |
 | **Port d'écoute proxy** | `8080` |
-| **Région Cloud Run** | `europe-west4` (Amsterdam, Pays-Bas) |
+| **Région Cloud Run** | `europe-west1` (Belgique) |
 | **Type de proxy** | TCP Stream (Layer 4) |
 
 ## Optimisations (économies de crédits)
@@ -19,17 +19,12 @@ Proxy Nginx déployé sur Google Cloud Run pour rediriger le trafic TCP vers le 
 | `timeout` | `300` | Libère les ressources rapidement |
 | `memory` | `256Mi` | Minimum requis |
 
-## Fichiers
-- `nginx.conf` : Configuration Nginx optimisée
-- `Dockerfile` : Image Nginx:alpine
-- `README.md` : Ce fichier
-
-## Déploiement sur Cloud Run (Amsterdam)
+## Déploiement sur Cloud Run (Belgique)
 ```bash
 gcloud run deploy v2ray-proxy \
   --source . \
   --platform managed \
-  --region europe-west4 \
+  --region europe-west1 \
   --allow-unauthenticated \
   --port 8080 \
   --memory 256Mi \
