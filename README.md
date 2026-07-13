@@ -1,11 +1,11 @@
-# Proxy Nginx pour VPS (161.35.91.8)
+# Proxy Nginx pour VPS (93.127.138.70)
 
 Proxy Nginx déployé sur Google Cloud Run pour rediriger le trafic TCP vers le VPS principal.
 
 ## Configuration
 | Élément | Valeur |
 |---------|--------|
-| **VPS cible** | `161.35.91.8:443` |
+| **VPS cible** | `93.127.138.70:443` |
 | **Port d'écoute proxy** | `8080` |
 | **Région VPS** | `europe-west4` (Amsterdam, Pays-Bas) |
 | **Région Cloud Run** | `europe-west1` (Belgique) |
